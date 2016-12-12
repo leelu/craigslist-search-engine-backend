@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Craigslist Search Engine</title>
+
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <script src="static/js/jquery-3.1.1.min.js"></script>
+    <script src="static/js/search.js"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <nav>
+            </nav>
+            <h3 class="text-muted">Craigslist Search Engine</h3>
+        </div>
+
+        <form class="form-signin" action="/search" method="post" role="form">
+
+             <input type="name" name="searchterm" class="form-control" placeholder="Enter a search term" required autofocus>
+             <button class="btn btn-lg btn-primary btn-block" type="button">Search</button>
+         </form>
+    </div>
+    <div id="result">
+
+    </div>
+
+
+</body>
+</html>
