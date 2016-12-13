@@ -5,7 +5,7 @@ from elasticsearch_dsl import Search, Q
 #from urllib.request import urlopen
 import json, requests
 
-app = Flask(__name__)
+app = application = Flask(__name__)
 host = 'search-mysearchengine-7canadtuf2dlzoj5bvjeqwqufe.us-east-1.es.amazonaws.com'
 awsauth = AWS4Auth('AKIAJL3TXNQWGSIHZ5LQ', '+OP3FeY1vIr4S6TDG6yZMSQRYL8oaxJyu4pSYFSQ', 'us-east-1', 'es')
 esUrl = 'https://search-mysearchengine-7canadtuf2dlzoj5bvjeqwqufe.us-east-1.es.amazonaws.com/'
