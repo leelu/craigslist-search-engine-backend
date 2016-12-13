@@ -1,9 +1,7 @@
 from flask import Flask, render_template, json, request
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 from requests_aws4auth import AWS4Auth
-from elasticsearch_dsl import Search, Q
-#from urllib.request import urlopen
-import json, requests
+
 
 app = application = Flask(__name__)
 host = 'search-mysearchengine-7canadtuf2dlzoj5bvjeqwqufe.us-east-1.es.amazonaws.com'
@@ -19,14 +17,6 @@ es = Elasticsearch(hosts=[{'host': host, 'port': 443}],
 
 def callElasticsearchAPI(searchterm):
 
-    #searchUrl = esUrl + "_search?q=" + searchterm
-    #resp = requests.get(url=searchUrl)
-    #data = json.loads(resp.text)
-    #response = urlopen(esUrl)
-    #data = json.loads(response.text)
-    #return json.loads(data)
-
-
     response = es.search(
         index="craigslist-index",
         body={
@@ -40,9 +30,6 @@ def callElasticsearchAPI(searchterm):
         }
     )
     return response
-    #for hit in response['hits']['hits']:
-    #    print(hit['_score'], hit['_source']['link'])
-
 
 
 
@@ -52,22 +39,14 @@ def hello_world():
 
 @app.route('/search')
 def search():
-    #print("search web method running")
+
     term = request.args.get('searchterm')
-    #print(term)
+
     response = callElasticsearchAPI(term)
 
     result = formatResponse(response)
-    #print(result)
+
     return result
-    #Process result
-    #for hit in response['hits']['hits']:
-    #    print(hit['_score'], hit['_source']['title'])
-
-    #for tag in response['aggregations']['per_tag']['buckets']:
-    #    print(tag['key'], tag['max_lines']['value'])
-
-    #return '<p>You entered: ' + term + '</p>'
 
 
 def formatResponse(response):
@@ -76,8 +55,7 @@ def formatResponse(response):
     html += '<p class="stat">'  + str(response['hits']['total']) + ' results genereated in ' + str(response['took']) + ' ms</p>'
 
     for hit in response['hits']['hits']:
-        #print(hit['_score'], hit['_source']['title'])
-        #print("hit loop")
+
         score = hit['_score']
         link = hit['_source']['link']
         title = hit['_source']['title']
@@ -87,11 +65,6 @@ def formatResponse(response):
 
 
     return html
-
-#def get_data():
-#    response = requests.get("http://myhost/jsonapi")
-#    ...
-#    return response
 
 if __name__ == '__main__':
     app.run()
