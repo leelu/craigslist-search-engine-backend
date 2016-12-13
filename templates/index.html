@@ -11,6 +11,9 @@
     <script src="static/js/search.js"></script>
 
     <style>
+        p.stat {
+            margin-left: 30px;
+        }
     .result {
         color: darkblue;
         margin: 30px;
@@ -39,8 +42,8 @@
 
         <form class="form-signin" action="/search" method="get" role="form">
 
-             <input type="name" name="searchterm" class="form-control" placeholder="Enter a search term" required autofocus>
-             <button class="btn btn-lg btn-primary btn-block" type="button">Search</button>
+             <input type="name" name="searchterm" class="form-control" placeholder="Enter a keyword or a phrase" required autofocus>
+             <button id="search-button" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
          </form>
     </div>
     <div id="result">

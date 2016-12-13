@@ -5,7 +5,7 @@ from elasticsearch_dsl import Search, Q
 #from urllib.request import urlopen
 import json, requests
 
-app = application= Flask(__name__)
+app = Flask(__name__)
 host = 'search-mysearchengine-7canadtuf2dlzoj5bvjeqwqufe.us-east-1.es.amazonaws.com'
 awsauth = AWS4Auth('AKIAJL3TXNQWGSIHZ5LQ', '+OP3FeY1vIr4S6TDG6yZMSQRYL8oaxJyu4pSYFSQ', 'us-east-1', 'es')
 esUrl = 'https://search-mysearchengine-7canadtuf2dlzoj5bvjeqwqufe.us-east-1.es.amazonaws.com/'
@@ -30,7 +30,7 @@ def callElasticsearchAPI(searchterm):
     response = es.search(
         index="craigslist-index3",
         body={
-            "size": 100,
+            "size": 1000,
           "query": {
             "query_string": {
               "query": searchterm,
@@ -73,7 +73,7 @@ def search():
 def formatResponse(response):
 
     html = ''
-    html += '<table border = "1">'
+    html += '<p class="stat">'  + str(response['hits']['total']) + ' results genereated in ' + str(response['took']) + ' ms</p>'
 
     for hit in response['hits']['hits']:
         #print(hit['_score'], hit['_source']['title'])
