@@ -10,9 +10,26 @@
     <script src="static/js/jquery-3.1.1.min.js"></script>
     <script src="static/js/search.js"></script>
 
+    <style>
+    .result {
+        color: darkblue;
+        margin: 30px;
+        line-height: 1.0;
+    }
+    p {
+        color: dimgray;
+    }
+
+    h4 {
+        line-height: 0.9;
+    }
+
+    .result h4 {
+        font-size: 18px;
+    }
+    </style>
 </head>
 <body>
-
     <div class="container">
         <div class="header">
             <nav>
@@ -20,7 +37,7 @@
             <h3 class="text-muted">Craigslist Search Engine</h3>
         </div>
 
-        <form class="form-signin" action="/search" method="post" role="form">
+        <form class="form-signin" action="/search" method="get" role="form">
 
              <input type="name" name="searchterm" class="form-control" placeholder="Enter a search term" required autofocus>
              <button class="btn btn-lg btn-primary btn-block" type="button">Search</button>
