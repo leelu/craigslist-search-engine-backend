@@ -83,7 +83,7 @@ def formatResponse(response):
         title = hit['_source']['title']
         description = hit['_source']['description']
         print("score: " + str(score), "link: " + link, "title: " + title)
-        html += '<div class="result"><div class="title"><h4><a href="' + link + '">' + title + '</a></h4></div><div class="link">' + link + '</div><div>relevance score: <i>' + str(score) + '</i><p>' + description.replace('\n', ' ')[:200] + '</p></div></div>'
+        html += '<div class="result"><div class="title"><h4><a target="_blank" href="' + link + '">' + title + '</a></h4></div><div class="link">' + link + '</div><div>relevance score: <i>' + str(score) + '</i><p>' + description.replace('\n', ' ')[:200] + '</p></div></div>'
 
 
     return html
