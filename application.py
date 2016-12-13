@@ -28,7 +28,7 @@ def callElasticsearchAPI(searchterm):
 
 
     response = es.search(
-        index="craigslist-index3",
+        index="craigslist-index",
         body={
             "size": 1000,
           "query": {
